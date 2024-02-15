@@ -14,6 +14,10 @@ def main():
     st.set_page_config(page_title="Ask your PDF")
     st.header("Ask Your PDF")
 
+    # url = 'https://'
+    # response = requests.get(url)
+    # pdf = response.content
+    pdf = st.file_uploader("Upload your pdf",type="pdf")
     pdf = st.file_uploader("Upload your pdf",type="pdf")
 
     if pdf is not None:
