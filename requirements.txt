@@ -1,3 +1,4 @@
-PyPdf2
+streamlit
+PyPDF2
 Langchain
 dotenv
