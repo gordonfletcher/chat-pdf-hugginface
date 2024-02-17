@@ -17,7 +17,7 @@ def main():
     # url = 'https://'
     # response = requests.get(url)
     # pdf = response.content
-    pdf = st.file_uploader("Upload your pdf",type="pdf", , key = "pdfuploader")
+    pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
 
     if pdf is not None:
         pdf_reader = PdfReader(pdf)
