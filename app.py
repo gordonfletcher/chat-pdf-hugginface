@@ -17,8 +17,7 @@ def main():
     # url = 'https://'
     # response = requests.get(url)
     # pdf = response.content
-    pdf = st.file_uploader("Upload your pdf",type="pdf")
-    pdf = st.file_uploader("Upload your pdf",type="pdf")
+    pdf = st.file_uploader("Upload your pdf",type="pdf", , key = "pdfuploader")
 
     if pdf is not None:
         pdf_reader = PdfReader(pdf)
@@ -40,7 +39,7 @@ def main():
 
         knowledge_base = FAISS.from_texts(chunks,embeddings)
 
-        user_question = st.text_input("Ask Question about your PDF:")
+        user_question = st.text_input("Ask Question about your PDF:", key="user question")
         if user_question:
             docs = knowledge_base.similarity_search(user_question)
             llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature":5,
