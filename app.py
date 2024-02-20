@@ -32,7 +32,7 @@ def main():
     st.set_page_config(page_title="Ask your PDF")
     st.header("Ask Your PDF")
 
-    url = 'https://www.sciencedirect.com/science/article/pii/S0268401220310288/pdfft?md5=a7acc754cfb0bea25762183723db5eed&pid=1-s2.0-S0268401220310288-main.pdf'
+    url = 'https://salford-repository.worktribe.com/OutputFile/1502676'
     response = requests.get(url)
     pdf = response.content
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
