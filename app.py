@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+import requests
 import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
@@ -8,6 +9,23 @@ from langchain.vectorstores import FAISS #facebook AI similarity search
 from langchain.chains.question_answering import load_qa_chain
 from langchain import HuggingFaceHub
 
+def download_file_from_google_drive(file_id):
+    URL = "https://docs.google.com/uc?export=download&confirm=1"
+    session = requests.Session()
+
+    response = session.get(URL, params={"id": file_id}, stream=True)
+    token = get_confirm_token(response)
+
+    if token:
+        params = {"id": file_id, "confirm": token}
+        response = session.get(URL, params=params, stream=True)
+    return response.content
+
+def get_confirm_token(response):
+    for key, value in response.cookies.items():
+        if key.startswith("download_warning"):
+            return value
+    return None
 
 def main():
     load_dotenv()
