@@ -37,7 +37,7 @@ def main():
     pdf = response.content
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
 
-    if pdf is not None:
+    if pdf is not None and response.ok:
         pdf_reader = PdfReader(pdf)
         text = ""
         for page in pdf_reader.pages:
