@@ -32,7 +32,7 @@ def main():
     st.set_page_config(page_title="Ask your PDF")
     st.header("Ask Your PDF")
 
-    url = 'https://cronfa.swan.ac.uk/Record/cronfa61678/Download/61678__25616__4c22b4eb2f11480899bcd5831385baf9.pdf,'
+    url = 'https://cronfa.swan.ac.uk/Record/cronfa61678/Download/61678__25616__4c22b4eb2f11480899bcd5831385baf9.pdf'
     response = requests.get(url)
     pdf = response.content
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
@@ -44,7 +44,7 @@ def main():
         for page in pdf_reader.pages:
             text += page.extract_text()
     
-    if text is not None:
+     # if text is not None:
         # spilit ito chuncks
         text_splitter = CharacterTextSplitter(
             separator="\n",
