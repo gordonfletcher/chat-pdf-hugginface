@@ -19,7 +19,7 @@ def download_file_from_google_drive(file_id):
     if token:
         params = {"id": file_id, "confirm": token}
         response = session.get(URL, params=params, stream=True)
-    return response.content
+    return response.text
 
 def get_confirm_token(response):
     for key, value in response.cookies.items():
