@@ -32,18 +32,18 @@ def main():
     st.set_page_config(page_title="Ask your PDF")
     st.header("Ask Your PDF")
 
-    #url = 'https://salford-repository.worktribe.com/OutputFile/1502676'
-    #response = requests.get(url)
-    #pdf = response.content
+    url = 'https://cronfa.swan.ac.uk/Record/cronfa61678/Download/61678__25616__4c22b4eb2f11480899bcd5831385baf9.pdf,'
+    response = requests.get(url)
+    pdf = response.content
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
-    text = download_file_from_google_drive('1FK3_FsiHzICCDRmSU4USsYHYPjgR1xX8JqZ-n3fhIrA')
-    '''
+    #text = download_file_from_google_drive('1FK3_FsiHzICCDRmSU4USsYHYPjgR1xX8JqZ-n3fhIrA')
+    
     if pdf is not None and response.ok:
         pdf_reader = PdfReader(pdf)
         text = ""
         for page in pdf_reader.pages:
             text += page.extract_text()
-    '''
+    
     if text is not None:
         # spilit ito chuncks
         text_splitter = CharacterTextSplitter(
