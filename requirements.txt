@@ -8,4 +8,4 @@ huggingface-hub
 torch
 sentence-transformers
 InstructorEmbedding
-faiss
+faiss-cpu
