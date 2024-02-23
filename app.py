@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+import io
 import requests
 import streamlit as st
 from pypdf import PdfReader
@@ -39,7 +40,8 @@ def main():
     #text = download_file_from_google_drive('1FK3_FsiHzICCDRmSU4USsYHYPjgR1xX8JqZ-n3fhIrA')
     
     if pdf is not None and response.ok:
-        pdf_reader = PdfReader(pdf)
+        pdfcontent = io.BytesIO(pdf)
+        pdf_reader = PdfReader(pdfcontent)
         text = ""
         for page in pdf_reader.pages:
             text += page.extract_text()
