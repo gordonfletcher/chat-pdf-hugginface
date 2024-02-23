@@ -3,3 +3,8 @@ pypdf
 Langchain
 python-dotenv
 transformers
+langchain
+huggingface-hub
+torch
+sentence-transformers
+InstructorEmbedding
