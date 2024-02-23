@@ -32,7 +32,7 @@ def main():
     st.set_page_config(page_title="Ask your PDF")
     st.header("Ask Your PDF")
 
-    url = 'https://cronfa.swan.ac.uk/Record/cronfa61678/Download/61678__25616__4c22b4eb2f11480899bcd5831385baf9.pdf'
+    url = 'https://journalofbigdata.springeropen.com/counter/pdf/10.1186/s40537-022-00683-3.pdf'
     response = requests.get(url)
     pdf = response.content
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
@@ -62,7 +62,7 @@ def main():
         user_question = st.text_input("Ask Question about your PDF:", key="user question")
         if user_question:
             docs = knowledge_base.similarity_search(user_question)
-            llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature":5,
+            llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":5,
                                                       "max_length":64})
             chain = load_qa_chain(llm,chain_type="stuff")
             response = chain.run(input_documents=docs,question=user_question)
