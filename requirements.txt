@@ -2,3 +2,4 @@ streamlit
 pypdf
 Langchain
 python-dotenv
+sentence-transformers
