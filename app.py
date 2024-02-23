@@ -6,7 +6,7 @@ import streamlit as st
 from pypdf import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS #facebook AI similarity search
+from langchain_community.vectorstores import FAISS #facebook AI similarity search
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.llms import HuggingFaceHub
 # from langchain import HuggingFaceHub
