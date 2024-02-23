@@ -3,6 +3,7 @@ import os
 import io
 import requests
 import streamlit as st
+import sentence-transformers
 from pypdf import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
