@@ -8,7 +8,8 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS #facebook AI similarity search
 from langchain.chains.question_answering import load_qa_chain
-from langchain import HuggingFaceHub
+import langchain_community.llms.HuggingFaceHub
+# from langchain import HuggingFaceHub
 
 def download_file_from_google_drive(file_id):
     URL = "https://docs.google.com/uc?export=download&confirm=1"
