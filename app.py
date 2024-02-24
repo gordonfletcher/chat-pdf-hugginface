@@ -8,7 +8,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS #facebook AI similarity search
 from langchain.chains.question_answering import load_qa_chain
-from langchain_community.llms import HuggingFaceHub
+from langchain_community.llms import HuggingFaceEndpoint
 # from langchain import HuggingFaceHub
 
 def download_file_from_google_drive(file_id):
@@ -65,10 +65,10 @@ def main():
         user_question = st.text_input("Ask Question about your PDF:", key="user question")
         if user_question:
             docs = knowledge_base.similarity_search(user_question)
-            llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":5,
+            llm = HuggingFaceEndpoint(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":5,
                                                       "max_length":64})
             chain = load_qa_chain(llm,chain_type="stuff")
-            response = chain.run(input_documents=docs,question=user_question)
+            response = chain.invoke(input_documents=docs,question=user_question)
 
             st.write(response)
 
