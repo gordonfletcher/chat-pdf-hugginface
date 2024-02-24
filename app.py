@@ -68,7 +68,7 @@ def main():
             llm = HuggingFaceEndpoint(repo_id="google/flan-t5-xxl", temperature=5,
                                                       max_length=64)
             chain = load_qa_chain(llm,chain_type="stuff")
-            response = chain.invoke(input_documents=docs,question=user_question)
+            response = chain.run(input_documents=docs,question=user_question)
 
             st.write(response)
 
