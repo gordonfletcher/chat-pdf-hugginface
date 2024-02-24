@@ -65,8 +65,8 @@ def main():
         user_question = st.text_input("Ask Question about your PDF:", key="user question")
         if user_question:
             docs = knowledge_base.similarity_search(user_question)
-            llm = HuggingFaceEndpoint(repo_id="google/flan-t5-xxl", "temperature"=5,
-                                                      "max_length"=64})
+            llm = HuggingFaceEndpoint(repo_id="google/flan-t5-xxl", temperature=5,
+                                                      max_length=64})
             chain = load_qa_chain(llm,chain_type="stuff")
             response = chain.invoke(input_documents=docs,question=user_question)
 
