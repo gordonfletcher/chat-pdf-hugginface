@@ -66,7 +66,7 @@ def main():
         if user_question:
             docs = knowledge_base.similarity_search(user_question)
             llm = HuggingFaceEndpoint(repo_id="google/flan-t5-xxl", temperature=5,
-                                                      max_length=64})
+                                                      max_length=64)
             chain = load_qa_chain(llm,chain_type="stuff")
             response = chain.invoke(input_documents=docs,question=user_question)
 
