@@ -28,15 +28,24 @@ def get_confirm_token(response):
         if key.startswith("download_warning"):
             return value
     return None
+    
+@st.cache_data
+def load_url()
+     url = 'https://journalofbigdata.springeropen.com/counter/pdf/10.1186/s40537-022-00683-3.pdf'
+     response = requests.get(url)
+     return response.content
+    
+@st.cache_resource
+def load_model():
+    return HuggingFaceEndpoint(repo_id="google/flan-t5-large", model_kwargs={"temperature":5,
+                "max_length":64})
 
 def main():
     load_dotenv()
     st.set_page_config(page_title="Ask your PDF")
     st.header("Ask Your PDF")
-
-    url = 'https://journalofbigdata.springeropen.com/counter/pdf/10.1186/s40537-022-00683-3.pdf'
-    response = requests.get(url)
-    pdf = response.content
+              
+    pdf = load_url()
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
     #text = download_file_from_google_drive('1FK3_FsiHzICCDRmSU4USsYHYPjgR1xX8JqZ-n3fhIrA')
     
@@ -65,8 +74,7 @@ def main():
         user_question = st.text_input("Ask Question about your PDF:", key="user question")
         if user_question:
             docs = knowledge_base.similarity_search(user_question)
-            llm = HuggingFaceEndpoint(repo_id="google/flan-t5-large", model_kwargs={"temperature":5,
-                "max_length":64})
+            llm = load_model()
             chain = load_qa_chain(llm,chain_type="stuff")
             response = chain.run(input_documents=docs,question=user_question)
 
