@@ -49,14 +49,14 @@ def main():
     # pdf = st.file_uploader("Upload your pdf",type="pdf", key = "pdfuploader")
     #text = download_file_from_google_drive('1FK3_FsiHzICCDRmSU4USsYHYPjgR1xX8JqZ-n3fhIrA')
     
-    if pdf is not None and response.ok:
+    if pdf is not None:
         pdfcontent = io.BytesIO(pdf)
         pdf_reader = PdfReader(pdfcontent)
         text = ""
         for page in pdf_reader.pages:
             text += page.extract_text()
     
-     # if text is not None:
+        # if text is not None:
         # spilit ito chuncks
         text_splitter = CharacterTextSplitter(
             separator="\n",
