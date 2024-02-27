@@ -30,7 +30,7 @@ def get_confirm_token(response):
     return None
     
 @st.cache_data
-def load_url()
+def load_url():
      url = 'https://journalofbigdata.springeropen.com/counter/pdf/10.1186/s40537-022-00683-3.pdf'
      response = requests.get(url)
      return response.content
